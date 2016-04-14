@@ -1,7 +1,7 @@
 {
   "name": "toggle-read-only",
   "main": "./lib/toggle-read-only",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Make editors read-only",
   "keywords": [
     "read-only"
