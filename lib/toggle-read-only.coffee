@@ -3,7 +3,10 @@ module.exports =
   activate: ->
     @commandSubscription = atom.commands.add 'atom-text-editor',
       'read-only:toggle': => @toggleReadOnly(atom.workspace.getActiveTextEditor())
-      'core:copy': -> atom.workspace.getActiveTextEditor().copySelectedText()
+      'core:copy': (e) ->
+        editor = atom.workspace.getActiveTextEditor()
+        return e.abortKeyBinding() unless editor.getBuffer().__isReadOnly is true
+        editor.copySelectedText()
     @workspaceSubscription = atom.workspace.observeTextEditors (editor) =>
       editor.onDidTerminatePendingState =>
         editor.terminatePendingState = => @toggleReadOnly(editor)
