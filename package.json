@@ -1,7 +1,7 @@
 {
   "name": "toggle-read-only",
   "main": "./lib/toggle-read-only",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Make editors read-only",
   "keywords": [
     "read-only"
@@ -15,7 +15,9 @@
     "autoReadOnly": {
       "name": "Read-only by default",
       "description": "These file extensions will be read-only automatically",
-      "default": ["log"],
+      "default": [
+        "log"
+      ],
       "type": "array",
       "items": {
         "type": "string"
