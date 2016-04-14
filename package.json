@@ -1,0 +1,25 @@
+{
+  "name": "toggle-read-only",
+  "main": "./lib/toggle-read-only",
+  "version": "0.0.0",
+  "description": "Make editors read-only",
+  "keywords": [
+    "read-only"
+  ],
+  "repository": "https://github.com/deprint/toggle-read-only",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "configSchema": {
+    "autoReadOnly": {
+      "name": "Read-only by default",
+      "description": "These file extensions will be read-only automatically",
+      "default": ["log"],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
