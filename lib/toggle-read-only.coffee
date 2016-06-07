@@ -11,7 +11,7 @@ module.exports =
       editor.onDidTerminatePendingState =>
         editor.terminatePendingState = => @toggleReadOnly(editor)
       for extension in atom.config.get('toggle-read-only.autoReadOnly')
-        return @toggleReadOnly(editor) if editor.getPath().endsWith extension
+        return @toggleReadOnly(editor) if editor.getPath()?.endsWith extension
 
   deactivate: ->
     @commandSubscription.dispose()
