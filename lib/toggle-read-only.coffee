@@ -5,7 +5,7 @@ module.exports =
       'read-only:toggle': -> toggleReadOnly(atom.workspace.getActiveTextEditor())
       'core:copy': (e) ->
         editor = atom.workspace.getActiveTextEditor()
-        return e.abortKeyBinding() unless editor.__isReadOnly is true
+        return e.abortKeyBinding() unless editor.getBuffer().__isReadOnly is true
         editor.copySelectedText()
     @workspaceSubscription = atom.workspace.observeTextEditors (editor) ->
       patchEditor(editor)
