@@ -1,6 +1,6 @@
 module.exports =
 
-  activate: ({editors} = {}) ->
+  activate: ({editors} = {editors: {}}) ->
     @commandSubscription = atom.commands.add 'atom-text-editor:not([mini])',
       'read-only:toggle': -> toggleReadOnly(atom.workspace.getActiveTextEditor())
       'core:copy': (e) ->
