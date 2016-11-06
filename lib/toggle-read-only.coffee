@@ -1,6 +1,6 @@
 module.exports =
 
-  activate: ->
+  activate: ({editors} = {}) ->
     @commandSubscription = atom.commands.add 'atom-text-editor:not([mini])',
       'read-only:toggle': -> toggleReadOnly(atom.workspace.getActiveTextEditor())
       'core:copy': (e) ->
@@ -9,12 +9,19 @@ module.exports =
         editor.copySelectedText()
     @workspaceSubscription = atom.workspace.observeTextEditors (editor) ->
       patchEditor(editor)
+      return editor.setReadOnly(true) if editors[editor.getPath()]
       for extension in atom.config.get('toggle-read-only.autoReadOnly')
         return editor.setReadOnly(true) if editor.getPath()?.endsWith extension
 
   deactivate: ->
     @commandSubscription.dispose()
     @workspaceSubscription.dispose()
+
+  serialize: ->
+    data = {}
+    for editor in atom.workspace.getTextEditors()
+      data[editor.getPath()] = editor.getBuffer().__isReadOnly is true
+    editors: data
 
 toggleReadOnly = (editor) ->
   patchEditor(editor)

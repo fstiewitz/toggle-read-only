@@ -1,4 +1,4 @@
 'context-menu':
-  'atom-text-editor': [
+  'atom-text-editor:not([mini])': [
     {label: 'Toggle Read Only', command: 'read-only:toggle'}
   ]

@@ -9,3 +9,5 @@ To enable read-only mode, you can:
 
 You can also add file extensions in the package settings to make them read-only
 when you open them.
+
+_There is no official API to make editors read-only. Things can break after an update._
