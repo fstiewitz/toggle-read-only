@@ -9,7 +9,9 @@ module.exports =
         editor.copySelectedText()
     @workspaceSubscription = atom.workspace.observeTextEditors (editor) ->
       patchEditor(editor)
-      return editor.setReadOnly(true) if editors?[editor.getPath()]
+      if editors?[editor.getPath()]
+        editors[editor.getPath()] = false
+        return editor.setReadOnly(true)
       for extension in atom.config.get('toggle-read-only.autoReadOnly')
         return editor.setReadOnly(true) if editor.getPath()?.endsWith extension
 
