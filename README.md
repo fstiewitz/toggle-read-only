@@ -1,4 +1,4 @@
-# toggle-read-only
+# BROKEN+UNPUBLISHED toggle-read-only
 
 ### Make text editors read-only.
 
